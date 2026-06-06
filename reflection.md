@@ -12,11 +12,12 @@ Answer each question in 3 to 5 sentences. Be specific and honest about what actu
 
 Document at least 3 bugs you found. Add rows as needed.
 
-| Input | Expected Behavior | Actual Behavior | Console Output / Error |
-|-------|-------------------|-----------------|------------------------|
-| | | | |
-| | | | |
-| | | | |
+| Input           | Expected Behavior | Actual Behavior | Console Output / Error |
+|-----------------|-------------------|-----------------|------------------------|
+| Guessed 25      | Hint "Go Higher"  | Hint "Go Lower" | N/A |
+| Guessed -1      | Invalid range     | Hint "Go Lower" | N/A |
+| Difficulty Hard | Range 1 to 50     | Range 1 to 100  | N/A |
+| New Game        | Reset game state  | No new game     | "Start a new game" | 
 
 ---
 
