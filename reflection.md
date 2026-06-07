@@ -27,6 +27,9 @@ Document at least 3 bugs you found. Add rows as needed.
 - Give one example of an AI suggestion that was correct (including what the AI suggested and how you verified the result).
 - Give one example of an AI suggestion that was incorrect or misleading (including what the AI suggested and how you verified the result).
 
+Used Claude Code to refactor logical functions out of app.py and into logic_utils.py and to create test cases in test_game_logic.py
+Correct: told Claude to fix the reversed hint bug. It suggested swapping the returns so that it correctly shows if the guess is high or low. It worked and I verified my relaunching app.py and manually checking different guesses
+Wrong: told Claude to fix the wrong difficulty range bug. It correctly assigned the low, high variables with the correct ranges, but didn't update other occurances where the function was used again.
 ---
 
 ## 3. Debugging and testing your fixes
@@ -35,6 +38,10 @@ Document at least 3 bugs you found. Add rows as needed.
 - Describe at least one test you ran (manual or using pytest)  
   and what it showed you about your code.
 - Did AI help you design or understand any tests? How?
+
+A bug was fixed if the previously documented error no longer appeared throughout multiple tests
+One test I ran manually was changing the difficulty and pressing new game to see if the ranges and secret value correctly changed
+AI designed the unit tests to quickly test if functions performed as expected
 
 ---
 

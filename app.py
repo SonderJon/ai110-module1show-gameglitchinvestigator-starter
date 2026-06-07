@@ -117,7 +117,7 @@ if new_game: # FIXME: new game not working
     st.session_state.attempts = 0
     # FIXME: range incorrect, always between 1 and 100
     #st.session_state.secret = random.randint(1, 100)
-    st.session_state.secret = random.randint(low, high) # Fix: secret now withing difficulty range
+    st.session_state.secret = random.randint(low, high) # Fix: secret now within difficulty range
     st.success("New game started.")
     st.rerun()
 
