@@ -3,14 +3,7 @@ import streamlit as st
 import logic_utils
 
 def get_range_for_difficulty(difficulty: str):
-    if difficulty == "Easy":
-        return 1, 20
-    if difficulty == "Normal":
-        return 1, 100
-    if difficulty == "Hard":
-        return 1, 50
-    return 1, 100
-
+    pass # refactored
 
 def parse_guess(raw: str):
     if raw is None:
@@ -71,7 +64,8 @@ attempt_limit_map = {
 }
 attempt_limit = attempt_limit_map[difficulty]
 
-low, high = get_range_for_difficulty(difficulty)
+# FIX: utilizing logic_utils, made with agent mode
+low, high = logic_utils.get_range_for_difficulty(difficulty)
 
 st.sidebar.caption(f"Range: {low} to {high}")
 st.sidebar.caption(f"Attempts allowed: {attempt_limit}")
@@ -94,7 +88,7 @@ if "history" not in st.session_state:
 st.subheader("Make a guess")
 
 st.info(
-    f"Guess a number between 1 and 100. "
+    f"Guess a number between 1 and {high}. " # Fix: info box displays correct range
     f"Attempts left: {attempt_limit - st.session_state.attempts}"
 )
 
@@ -119,9 +113,11 @@ with col3:
     show_hint = st.checkbox("Show hint", value=True)
 
 if new_game: # FIXME: new game not working
-    st.session_state.status = "playing" # FIX:
+    st.session_state.status = "playing" # FIX: status reset to "playing"
     st.session_state.attempts = 0
-    st.session_state.secret = random.randint(1, 100)
+    # FIXME: range incorrect, always between 1 and 100
+    #st.session_state.secret = random.randint(1, 100)
+    st.session_state.secret = random.randint(low, high) # Fix: secret now withing difficulty range
     st.success("New game started.")
     st.rerun()
 
