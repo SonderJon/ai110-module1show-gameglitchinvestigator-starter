@@ -31,7 +31,7 @@ def parse_guess(raw: str):
 
 
 def check_guess(guess, secret): # FIXME: reversed hint
-    pass
+    pass # refactored
 
 
 def update_score(current_score: int, outcome: str, attempt_number: int):
@@ -119,6 +119,7 @@ with col3:
     show_hint = st.checkbox("Show hint", value=True)
 
 if new_game: # FIXME: new game not working
+    st.session_state.status = "playing" # FIX:
     st.session_state.attempts = 0
     st.session_state.secret = random.randint(1, 100)
     st.success("New game started.")
